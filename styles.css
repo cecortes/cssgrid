@@ -31,6 +31,9 @@ body {
   /* Declaraciones de las columnas */
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, auto);
+
+  /* Grid Areas */
+  grid-template-areas: "cabecera cabecera cabecera" "copy copy barra" "widget1 widget2 barra" "pie pie pie";
 }
 
 .container_grid > div,
@@ -46,11 +49,13 @@ body {
 }
 
 .container_grid .cabecera {
-  /* Css Grid */
+  /* Css Grid no recomendado
   grid-column-start: 1;
-  grid-column-end: -1;
+  grid-column-end: -1; */
   background: var(--cabecera);
   color: var(--white);
+  /* Grid area */
+  grid-area: cabecera;
 }
 
 .container_grid .cabecera > h1 {
@@ -65,10 +70,13 @@ body {
 }
 
 .container_grid .copy {
-  /* Css grid */
-  grid-column: span 2;
+  /* Css grid no recomendado
+  grid-column: span 2; */
   background: var(--copy);
   color: var(--black2);
+
+  /* Grid area */
+  grid-area: copy;
 }
 
 .container_grid .copy > h2 {
@@ -84,14 +92,17 @@ body {
 }
 
 .container_grid .barra {
-  /* Css grid */
-  grid-column: 3/4;
+  /* Css grid no recomendado
+  grid-column: 3/4; */
   background-color: var(--side);
   color: var(--black2);
 
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Grid area */
+  grid-area: barra;
 }
 
 .container_grid .barra > h2 {
@@ -110,10 +121,13 @@ body {
 }
 
 .container_grid .widget1 {
-  /* CSS grid */
-  grid-column: 1/3;
+  /* CSS grid no recomendado
+  grid-column: 1/3; */
   background-color: aqua;
   color: var(--black2);
+
+  /* Grid area */
+  grid-area: widget1;
 }
 
 .container_grid .widget1 > h2 {
@@ -123,10 +137,13 @@ body {
 }
 
 .container_grid .widget2 {
-  /* CSS grid */
-  grid-column: 3 / 4;
+  /* CSS grid  no recomendado
+  grid-column: 3 / 4; */
   background-color: aquamarine;
   color: var(--black2);
+
+  /* Grid area */
+  grid-area: widget2;
 }
 
 .container_grid .widget2 > h2 {
@@ -136,10 +153,13 @@ body {
 }
 
 .container_grid .pie {
-  /* CSS grid */
-  grid-column: span 4;
+  /* CSS grid no recmonendado
+  grid-column: span 4; */
   background-color: var(--pie);
   color: var(--black2);
+
+  /* Grid area */
+  grid-area: pie;
 }
 
 .container_grid .pie > h3 {
@@ -150,4 +170,28 @@ body {
 .container_grid .pie > p {
   font-size: 24px;
   font-weight: 300;
+}
+
+/* Responsive no recomendado 
+@media screen and (max-width: 768px) {
+
+ .container_grid .copy {
+   grid-column: 1 / -1;
+ }
+  
+ .container_grid .barra {
+   grid-column: 1 / -1;
+ }
+
+ .container_grid .widget1 {
+   column-span: 2; 
+ }
+
+} */
+
+/* Responsive con grid areas RECOMENDADO */
+@media screen and (max-width: 768px) {
+  .container_grid {
+    grid-template-areas: "cabecera cabecera cabecera" "copy copy copy" "barra barra barra" "widget1 widget1 widget2" "pie pie pie";
+  }
 }
